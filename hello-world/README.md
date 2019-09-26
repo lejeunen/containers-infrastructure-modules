@@ -1,0 +1,1 @@
+A simple _Hello World_ web server, behind an auto scaling group
