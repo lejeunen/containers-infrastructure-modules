@@ -18,7 +18,7 @@ resource "helm_release" "dashboard" {
   name = "dashboard"
   chart = "stable/kubernetes-dashboard"
   namespace = "kube-system"
-  version = "0.8.0"
+  version = "1.9.0"
   keyring = ""
 
 
