@@ -25,6 +25,7 @@ resource "helm_release" "nginx_ingress" {
 rbac:
   create: true
 controller:
+  hostNetwork: true
   service:
     type: NodePort
     annotations:
@@ -42,6 +43,10 @@ resource "kubernetes_ingress" "application" {
   metadata {
     name = "application-ingress"
     namespace = var.app_namespace
+
+    annotations= {
+      "nginx.ingress.kubernetes.io/rewrite-target" : "/",
+    }
   }
 
   spec {
@@ -54,7 +59,7 @@ resource "kubernetes_ingress" "application" {
             service_port = 9000
           }
 
-          path = "/container1/*"
+          path = "/container1"
         }
 
         path {
@@ -63,7 +68,7 @@ resource "kubernetes_ingress" "application" {
             service_port = 9000
           }
 
-          path = "/container2/*"
+          path = "/container2"
         }
       }
     }
