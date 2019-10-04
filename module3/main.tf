@@ -15,16 +15,18 @@ provider "helm" {
 
 }
 
+data "helm_repository" "containers" {
+  name = "containers"
+  url  = "https://raw.githubusercontent.com/lejeunen/containers-infrastructure-charts/master/repository/"
+}
 
 resource "helm_release" "module3" {
   name = "module3"
-  # TODO get chart from repository
-  chart = "../../../../../../../../../containers/helm/container3"
-  namespace = var.app_namespace
-
-  # chart version is constant because versionning is performed at git level.
-  # containers-infrastructure-environments refers to this repository with a git tag
+  repository = "${data.helm_repository.containers.metadata.0.name}"
+  chart = "container3"
   version = "0.1.0"
+
+  namespace = var.app_namespace
 
   set {
     name = "image.tag"

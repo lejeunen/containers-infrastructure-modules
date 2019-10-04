@@ -1,4 +1,5 @@
+# Module3
 
-Helm definition for module 1.
+Registers a repository if it's not already defined.
 
-Using relative path for now, but should be replaced by a proper helm repository.
+Define a helm release _module3_ based on chart _container3_
