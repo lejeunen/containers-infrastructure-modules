@@ -74,4 +74,7 @@ resource "kubernetes_ingress" "application" {
     }
 
   }
+
+  # make sure the app namespace has been created
+  depends_on = [helm_release.nginx_ingress]
 }
