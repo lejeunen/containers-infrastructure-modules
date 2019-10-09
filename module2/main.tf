@@ -24,18 +24,6 @@ resource "helm_release" "module2" {
   name = "module2"
   repository = "${data.helm_repository.containers.metadata.0.name}"
   chart = "container2"
-  version = "0.1.3"
-
+  version = "0.1.4"
   namespace = var.app_namespace
-
-
-  set {
-    name = "image.tag"
-    value = "latest"
-  }
-
-  set {
-    name = "image.repository"
-    value = "lejeunen/container2"
-  }
 }
