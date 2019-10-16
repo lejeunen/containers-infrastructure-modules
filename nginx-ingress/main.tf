@@ -25,7 +25,7 @@ resource "helm_release" "nginx_ingress" {
 rbac:
   create: true
 controller:
-  hostNetwork: true
+  hostNetwork: false
   service:
     type: NodePort
     annotations:
