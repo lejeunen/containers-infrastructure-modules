@@ -20,10 +20,10 @@ data "helm_repository" "containers" {
   url  = "https://raw.githubusercontent.com/lejeunen/containers-infrastructure-charts/master/repository/"
 }
 
-resource "helm_release" "module2" {
-  name = "module2"
+resource "helm_release" "container3" {
+  name = "container3"
   repository = "${data.helm_repository.containers.metadata.0.name}"
-  chart = "container2"
-  version = "0.1.4"
+  chart = "container3"
+  version = "0.1.2"
   namespace = var.app_namespace
 }

@@ -14,16 +14,15 @@ provider "helm" {
   namespace = "infra"
 
 }
-
 data "helm_repository" "containers" {
   name = "containers"
   url  = "https://raw.githubusercontent.com/lejeunen/containers-infrastructure-charts/master/repository/"
 }
 
-resource "helm_release" "module3" {
-  name = "module3"
+resource "helm_release" "container1" {
+  name = "container1"
   repository = "${data.helm_repository.containers.metadata.0.name}"
-  chart = "container3"
+  chart = "container1"
   version = "0.1.2"
   namespace = var.app_namespace
 }
