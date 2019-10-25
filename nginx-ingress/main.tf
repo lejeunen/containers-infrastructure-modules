@@ -55,7 +55,7 @@ resource "kubernetes_ingress" "application" {
       http {
         path {
           backend {
-            service_name = "module1-container1"
+            service_name = "container1"
             service_port = 9000
           }
 
@@ -64,11 +64,20 @@ resource "kubernetes_ingress" "application" {
 
         path {
           backend {
-            service_name = "module2-container2"
+            service_name = "container2"
             service_port = 9000
           }
 
           path = "/container2"
+        }
+
+        path {
+          backend {
+            service_name = "container3"
+            service_port = 9000
+          }
+
+          path = "/container3"
         }
       }
     }
