@@ -24,6 +24,6 @@ resource "helm_release" "container2" {
   name = "container2"
   repository = "${data.helm_repository.containers.metadata.0.name}"
   chart = "container2"
-  version = "0.1.5"
+  version = "0.1.9"
   namespace = var.app_namespace
 }
